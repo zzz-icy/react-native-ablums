@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View, Text } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
@@ -19,16 +19,17 @@ class AlbumList extends React.Component {
             )
     }
     renderAlbums() {
-        this.state.albums.map((album) => (
-            <AlbumDetail key={album.title} albumInfo={item} />
-        ))
+        // remember to return
+        return this.state.albums.map((album) => (
+            <AlbumDetail key={album.title} album={album} />
+        ));
     }
 
     // we need some logics to handle when http requests completes, rerender the component to show th data
+
     render() {
-        // const { albums } = this.state;
-        // if (albums === []) return 'nodata';
-        console.log(albums);
+        console.log(this.state.albums);
+        // if (this.state.albums === []) return <Text>nodata</Text>;
         return (
             <View>
                 {this.renderAlbums()}
